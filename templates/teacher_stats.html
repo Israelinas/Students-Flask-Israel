@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block title %}Course Statistics{% endblock %}
+{% block content %}
+
+
+<h3>Hello {{ teachers[0][1] }}, {{ message }}</h3>
+
+{% for stat in stats %}
+<div style="padding-bottom: 4vh;">
+<div  style="padding-bottom: 4vh; padding-top: 4vh; background-color: #e7e7ef;">
+<div>
+    <h1 style="display: grid; justify-content: center; color: #DF1522; padding-bottom: 4vh; padding-bottom: 4vh;">
+        <b>Your Overall Numbers</b>
+    </h1>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(7, 1fr); text-align: center;">
+    <div style="grid-column: 1/2;">
+        <i class="fa-sharp fa-solid fa-book fa-2xl" style="color: #2d3142;"></i>
+        <h3 style="margin-top: 0; color: #2d3142; font-size: 40px;">{{ stat[0] }}</h3>
+        <h4 style="color: #2d3142;">Courses</h4>
+    </div>
+
+    <div style="grid-column: 2/3;">
+        <i class="fa-solid fa-graduation-cap fa-2xl" style="color: #2d3142;"></i>
+        <h3 style="margin-top: 0; color: #2d3142; font-size: 40px;" class="value">{{ stat[1] }}
+        </h3>
+        <h4 style="color: #2d3142;">Students</h4>
+    </div>
+
+    <div style="grid-column: 3/4;">
+        <i class="fa-solid fa-mars fa-2xl" style="color: #2d3142;"></i>
+        <h3 style="margin-top: 0; color: #2d3142; font-size: 40px;" class="value">{{ stat[2] }}
+        </h3>
+        <h4 style="color: #2d3142;">Male Students</h4>
+    </div>
+
+
+    <div style="grid-column: 4/5;">
+        <i class="fa-solid fa-venus fa-2xl" style="color: #2d3142;"></i>
+        <h3 style="margin-top: 0; color: #2d3142; font-size: 40px;" class="value">{{ stat[3] }}
+        </h3>
+        <h4 style="color: #2d3142;">Female Students</h4>
+    </div>
+
+    <div style="grid-column: 5/6;">
+        <i class="fa-solid fa-square-check fa-2xl" style="color: #2d3142;"></i>
+        <h3 style="margin-top: 0; color: #2d3142; font-size: 40px;" class="value">{{ stat[4] }}
+        </h3>
+        <h4 style="color: #2d3142;">Average Grade</h4>
+    </div>
+
+    <div style="grid-column: 6/7;">
+        <i class="fa-solid fa-person-cane fa-2xl" style="color: #2d3142;"></i>
+        <h3 style="margin-top: 0; color: #2d3142; font-size: 40px;" class="value">{{ stat[5] }}
+        </h3>
+        <h4 style="color: #2d3142;">Average Age</h4>
+    </div>
+
+    <div style="grid-column: 7/8;">
+        <i class="fa-solid fa-clipboard-user fa-2xl" style="color: #2d3142;"></i>
+        <h3 style="margin-top: 0; color: #2d3142; font-size: 40px;" class="value">{{ stat[6] }}%
+        </h3>
+        <h4 style="color: #2d3142;">% Attendance</h4>
+    </div>
+</div>
+</div>
+</div>
+{% endfor %}
+
+
+
+{% for course in course_stats %}
+<div style="padding-bottom: 4vh;">
+    <div  style="padding-bottom: 4vh; padding-top: 4vh; background-color: #e7e7ef;">
+<div>
+    <h1 style="display: grid; justify-content: center; color: #DF1522; padding-bottom: 4vh;">
+        <b>In {{ course[0] }}</b>
+    </h1>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(6, 1fr); text-align: center;">
+
+    <div style="grid-column: 1/2;">
+        <i class="fa-solid fa-graduation-cap fa-2xl" style="color: #2d3142;"></i>
+        <h3 style="margin-top: 0; color: #2d3142; font-size: 40px;" class="value">{{ course[1] }}
+        </h3>
+        <h4 style="color: #2d3142;">Students</h4>
+    </div>
+
+    <div style="grid-column: 2/3;">
+        <i class="fa-solid fa-mars fa-2xl" style="color: #2d3142;"></i>
+        <h3 style="margin-top: 0; color: #2d3142; font-size: 40px;" class="value">{{ course[2] }}
+        </h3>
+        <h4 style="color: #2d3142;">Male Students</h4>
+    </div>
+
+
+    <div style="grid-column: 3/4;">
+        <i class="fa-solid fa-venus fa-2xl" style="color: #2d3142;"></i>
+        <h3 style="margin-top: 0; color: #2d3142; font-size: 40px;" class="value">{{ course[3] }}
+        </h3>
+        <h4 style="color: #2d3142;">Female Students</h4>
+    </div>
+
+    <div style="grid-column: 4/5;">
+        <i class="fa-solid fa-square-check fa-2xl" style="color: #2d3142;"></i>
+        <h3 style="margin-top: 0; color: #2d3142; font-size: 40px;" class="value">{{ course[4] }}
+        </h3>
+        <h4 style="color: #2d3142;">Average Grade</h4>
+    </div>
+
+    <div style="grid-column: 5/6;">
+        <i class="fa-solid fa-person-cane fa-2xl" style="color: #2d3142;"></i>
+        <h3 style="margin-top: 0; color: #2d3142; font-size: 40px;" class="value">{{ course[5] }}
+        </h3>
+        <h4 style="color: #2d3142;">Average Age</h4>
+    </div>
+
+    <div style="grid-column: 6/7;">
+        <i class="fa-solid fa-clipboard-user fa-2xl" style="color: #2d3142;"></i>
+        <h3 style="margin-top: 0; color: #2d3142; font-size: 40px;" class="value">{{ course[6] }}%
+        </h3>
+        <h4 style="color: #2d3142;">% Attendance</h4>
+    </div>
+</div>
+</div>
+</div>
+{% endfor %}
+
+{% endblock %}
+
+
+
+ 

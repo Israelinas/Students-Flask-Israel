@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Update Profile{% endblock %}
+{% block content %}
+<div style="display: flex; justify-content: center; padding-top: 4vh; padding-bottom: 4vh;">
+<div>
+    <h1>Hello {{ teacher_info[0][0] }}, {{ message }}</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Change/update your details</legend>
+            <p>Full Name
+                <br><input type="text" name="name" value="{{ teacher_info[0][0] }}" autofocus>
+            </p>
+            <p><label for="image">Profile picture</label>
+                <br><input type="file" name="image" value="{{ teacher_info[0][1] }}">
+            </p>
+            <p><select name="gender" required>
+                    <option value="{{ teacher_info[0][2] }}" selected hidden>Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select></p>
+            <p>Birth Date
+                <br><input type="date" name="birth_date" value="{{ teacher_info[0][3] }}" placeholder="Birth Date">
+            </p>
+            <p>Mobile Phone
+                <br><input type="text" name="phone" value="{{ teacher_info[0][4] }}" placeholder="Phone">
+            </p>
+            <p>Address
+                <br><input type="text" name="address" value="{{ teacher_info[0][5] }}" placeholder="Address"
+                    class="address-input">
+                <input type="submit" name="personal_info" value="Update" class="btn-update">
+            </p>
+        </fieldset>
+    </form>
+    <form method="POST">
+        <fieldset>
+            <legend>Change/update your credentials</legend>
+            <br>
+            <input type="email" name="email" value="{{ teacher_info[0][6] }}" placeholder="New Email"
+                class="email-input">
+            <input type="password" name="password" value="{{ teacher_info[0][7] }}" placeholder="New Password">
+            <input type="checkbox" id="show-password">
+            <label for="show-password" class="password-toggle">
+                <i class="fa fa-eye"></i>
+            </label>
+            <input type="submit" name="credentials" value="Update" class="btn-update">
+        </fieldset>
+    </form>
+
+    <script>
+        var checkbox = document.getElementById('show-password');
+        var password = document.getElementsByName('password')[0];
+
+        checkbox.addEventListener('change', function () {
+            if (checkbox.checked) {
+                password.type = 'text';
+            } else {
+                password.type = 'password';
+            }
+        });
+    </script>
+
+</div>
+</div>
+
+
+{% endblock %}

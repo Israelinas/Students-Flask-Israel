@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Attendance{% endblock %}
+{% block content %}
+
+<h3>Hello {{ teachers[0][1] }}, {{ message }}</h3>
+<div class="center-div-grid">
+
+    <form method="POST">
+        <select name="active_course_id">
+            <option hidden>{% if course_name %} {{ active_course_id }} - {{ course_name[0][0] }}{% else %} Select Course {% endif %}</option>
+            {% for course in active_courses %}
+            <option value="{{ course[0] }}" {% if course[0]==active_course_id %}selected{% endif %}>{{ course[0] }} - {{
+                course[1] }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Select Course">
+    </form>
+    {% if active_course_id %}
+    <form method="POST">
+
+        <input type="hidden" name="active_course_id" value="{{ active_course_id }}">
+        <select name="attend_date">
+            {% for date in attend_dates %}
+            {% if date[0] == request.form.get('attend_date') %}
+            <option value="{{ date[0] }}" selected>{{ date[0] }}</option>
+            {% else %}
+            <option value="{{ date[0] }}">{{ date[0] }}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+
+        <input type="submit" value="Select Date">
+    </form>
+
+    {% if attendance %}
+    <table>
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Attendance</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in attendance %}
+            <tr>
+                <td>{{ student[0] }}</td>
+                <td>{{ student[1] }}</td>
+                <td>{{ student[2] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    {% endif %}
+</div>
+
+{% endblock %}

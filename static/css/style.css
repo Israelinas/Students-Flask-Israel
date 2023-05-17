@@ -1,0 +1,776 @@
+*{
+    font-family: 'Rubik';
+}
+
+.inner {
+    min-height: calc(100vh - 76px - 265px);
+    max-height: auto;   
+}
+
+h3 {
+    padding: 3vh;
+    text-align: center;
+    font-weight: 700;
+}
+
+h5 {
+    padding: 1vh;
+    font-weight: 700;
+}
+
+h4 {
+    padding-top: 0.5vh;
+    font-weight: 700;
+}
+
+/* SLIDER */
+.slider {
+    position: relative;
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+}
+
+.slider img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 2s ease-in-out;
+}
+.slider button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+}
+.slider button.prev {
+    left: 10px;
+}
+.slider button.next {
+    right: 10px;
+}
+
+.slider-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    background-color: rgb(35, 38, 51, .6); 
+    border-radius: 25px;
+
+    z-index: 1;
+}
+
+.slider-text h2 {
+  font-size: 10em;
+}
+
+.slider-text p {
+  font-size: 5em;
+  margin: 0;
+}
+/* END SLIDER */
+  
+.leads-form {
+    border-radius: 5px;
+    border-color: black ;
+    background-color: beige;
+    display: flex;
+    justify-content: center;
+    padding: 2vh;
+}
+
+.leads-form-title {
+    padding: 3vh;
+    /* display: flex;
+    justify-content: center; */
+    text-align: center;
+    background-color: beige;
+}
+
+.leads-send-button {
+    color: black;
+    background-color: gold;
+    border-color: gold;
+    border-radius: 5px;
+    width: 25vh;
+}
+
+.leads-sent {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    background-color: beige;
+}
+
+/* NAVBAR + HEADER CSS */
+.topnav {
+    overflow: hidden;
+    background-color: #DF1522;
+    padding: 1.5vh;
+    display: flex;
+    gap: 2vh;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+  
+.topnav a {
+    color: white;
+    text-decoration: none;
+    gap: 20px;
+    text-align: center;
+    padding: 1.5vh;
+    font-size: 20px;
+}
+  
+.topnav a:hover {
+    padding: 1.5vh;
+    background-color: #2d3142;
+    color: white;
+}
+  
+.topnav a.active {
+    padding: 1.5vh;
+    background-color: #2d3142;
+    color: white;
+    border-radius: 10px;
+}
+
+.logo {
+    padding: 2vh;
+    border-image-repeat: no-repeat;
+    background-color: #DF1522;
+}
+
+header {
+    display: flex;
+    background-color: #DF1522;
+}
+/* NAVBAR + HEADER CSS END */
+
+/* SUB NAVBAR */
+.subnav {
+    float: right;
+    overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size: 20px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: #2d3142;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: #2d3142;
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content a {
+  float: right;
+  color: white;
+  text-decoration: none;
+}
+  
+  
+.subnav-content a:hover {
+    background-color: #eee;
+    color: black;
+}
+  
+  
+.subnav:hover .subnav-content {
+  display: block;
+}
+/* SUB NAVBAR END */
+
+/* FOOTER CSS */
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 4vh 15%;
+    background-color: #2d3142;
+    color: #efefef;
+    display: flex;
+}
+
+.footer div {
+    text-align: center;
+}
+
+.col-2 {
+    flex-grow: 2;
+}
+
+.footer div h3 {
+    font-weight: 300;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+
+.col-1 a {
+    display: block;
+    text-decoration: none;
+    color: #efefef;
+    margin-bottom: 10px;
+}
+
+.col-1 a:hover {
+    display: block;
+    text-decoration: none;
+    color: #DF1522;
+    margin-bottom: 10px;
+
+}
+
+.footer-form-input {
+    width: 400px;
+    height: 45px;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    outline: none;
+    border: none;
+}
+
+
+.footer-submit-form {
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.footer-submit-form:hover {
+    background-color: transparent;
+    border: 2px solid #fff;
+    background-color: #232633;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-size: 15px;
+    cursor: pointer;
+    color: #fff;    
+}
+
+.add_form {
+    padding: 3vh;
+    display: flex;
+    justify-content: center;
+}
+
+.phone-link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.phone-link:hover {
+    color: #DF1522;
+    text-decoration: none;
+}
+
+.col-3 {
+    text-decoration: none;
+    color: #efefef;
+}
+/* FOOTER CSS END */
+
+legend {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+fieldset {  
+    width: 120vh;
+    border-radius: 1vh;
+    background-color: beige;
+    margin: 1vh;
+    padding: 1vh;
+    box-shadow: 5px 5px #2d3142;
+}
+
+.add-course-link {
+    padding: 1vh;
+    font-size: 27px;
+    display: flex;
+    justify-content: center;
+}
+
+.update-h4 {
+    padding: 3vh;
+    display: flex;
+    justify-content: center;
+}
+
+
+.update {
+    padding: 3vh;
+    gap: 2vh;
+    display: grid;
+    height: 100%;
+    grid-template-columns: 2% 10% 15% 10% 10%;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    justify-content: center;
+}
+
+.updates {
+    gap: 2vh;
+    display: grid;
+    height: 100%;
+    grid-template-columns: 2% 10% 15% 10% 10%;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    justify-content: center;
+    margin-top: 1vh;
+}
+
+.btn-add {    
+    margin-left: 2vh;
+    font-size: 20px;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    border-color: transparent;
+    width: 10vh;
+    box-shadow: 3px 3px #888888;
+}
+
+.btn-add:hover {
+    background-color: darkgreen;
+}
+
+.btn-delete {
+    margin-left: 1vh;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    width: 10vh;
+    border-color: transparent;
+    margin-top: -10px;
+    box-shadow: 3px 3px #888888;
+}
+
+.btn-delete:hover {
+    background-color: rgb(193, 10, 10);
+}
+
+.btn-update {   
+    margin-left: 1vh;
+    background-color: orange;
+    color: white;
+    border-radius: 5px;
+    width: 10vh;
+    border-color: transparent;
+    margin-top: -10px;
+    margin-left: 8vh;
+    box-shadow: 3px 3px #888888;
+}
+
+.btn-update:hover {
+    background-color: rgb(230, 149, 0);
+}
+
+.email-input{
+    width: 35vh;
+}
+
+.address-input{
+    width: 55vh;
+}
+
+input {
+    padding: 0.2vh;
+    border-radius: 5px;
+    border-color: rgb(255, 255, 255, 255);
+}
+
+form {
+    padding: 0.5vh;
+}
+
+/* USER CARDS CSS */
+.user-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.user-card {
+    padding: 2.5vh;
+    width: 320px;
+    height: 400px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    overflow: hidden;
+}
+
+.user-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.user-card h2 {
+    margin: 20px 0 10px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.user-card p {
+    margin: 5px 0;
+    font-size: 16px;
+    text-align: left;
+}
+/* END USER CARD */
+
+td {
+    padding-top: 0.2vh;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 2vh;
+}
+
+/* COURSE CARD */
+.course-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.course-card {
+    width: 60rem;
+    height: 15rem;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.course-card img {
+    width: 30%;
+    height: 100%;
+    object-fit: cover;
+}
+.course-card-text {
+    width: 90%;
+    padding: 20px;
+}
+.course-card h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 10px;
+    text-align: left;
+}
+.course-card p {
+    font-size: 16px;
+    margin: 0;
+    text-align: left;
+}
+/* END COURSE CARD */
+
+
+.search-form {
+    padding: 1vh;
+    width: 25rem;
+}
+
+.search-btn {
+    padding: 1vh;
+    background-color: whitesmoke;
+    border-color: whitesmoke;
+    color: #232633;
+}
+
+.login-nav {
+    position: absolute;
+    right: 0;
+    margin-right: 4vh;
+}
+.teacher_action {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.update-grade-form {
+    display: grid;
+    grid-template-columns: [r1] 150px [r2] 55px [r3] 80px [r4];
+    padding-top: 3vh;   
+}
+
+.update-grade-student-name {
+    grid-column-start: r1;
+    grid-column-end: r2;
+}
+
+.input-grade {
+    grid-column-start: r2;
+    grid-column-end: r3;
+}
+
+.update-grade {
+    grid-column-start: r3;
+    grid-column-end: r4;
+}
+
+.center-div {
+    padding: 3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.hp-grid-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px;
+    margin-top: 20px;
+}
+
+.home_new_course {
+    background-color: #ffe699;
+    border: 1px solid #ffb94d;
+    border-radius: 10px;
+    padding: 10px;
+    width: 50vh;
+    top: 20px;
+    left: 20px;
+    box-shadow: 2px 2px 2px beige;
+}
+
+.hp-new-courses {
+    grid-column: 2 / 3;
+    padding-top: 2vh;
+    padding-right: 2vh;
+}
+
+.hp-bg-all {
+    background-color: beige;
+}
+
+
+/* RECOMMENDED TEACHER CSS */
+.teacher-of-the-week {
+    grid-column: 1 / 2;
+    display: flex;
+    justify-content: center;
+}
+
+.recommended-teacher {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 450px;
+    margin: 20px;
+}
+
+.recommended-teacher h1 {
+  color: #2d3142;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.recommended-teacher img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.recommended-teacher p {
+  color: #555;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.recommended-teacher hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 10px 0;
+}
+
+.index-all {
+    background: rgb(255,255,255);
+background: linear-gradient(180deg, rgba(255,255,255,1) 60%, rgba(245,245,220,1) 100%);
+}
+/* END RECOMMENDED TEACHER CSS */
+
+
+.video-container {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.align-center {
+    align-items: center;
+}
+
+
+/* Style for attendance table */
+.attendance-table {
+    width: 120vh;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.attendance-th {
+  padding-top: 2vh;
+  text-align: center;
+}
+
+.attendance-td {
+    padding-top: 0.2vh;
+    text-align: center;
+}
+.attendance-thead .attendance-tr {
+  background-color: #dcdcdc;
+}
+
+
+/* Style for the attendance radio buttons */
+.attendance-radio {
+  margin: 0 5px;
+  vertical-align: middle;
+}
+
+
+/* Style for the update button */
+.btn-update-attendance {
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-update-attendance:hover {
+    background-color: #006b8f;
+}
+
+.attendance-div {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.center-div-grid {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.attendance-courses-div {
+    display: flex;
+    gap: 50vh;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.search-course-student-teacher{
+    border-radius: 5px; 
+    border: 2px solid #ccc; 
+    font-size: 16px; 
+    outline: none; 
+    box-sizing: border-box;
+} 
+
+.search-container-div{
+    display: flex; 
+    justify-content: center; 
+    padding-top: 2vh;
+
+}
+
+/* ADMIN TEACHERS / STUDENTS TABLES */
+  
+#admin-teachers-students-table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+}
+  
+#admin-teachers-students-table td, #admin-teachers-students-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+  
+#admin-teachers-students-table tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+  
+#admin-teachers-students-table tr:hover {
+    background-color: #ddd;
+}
+  
+#admin-teachers-students-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #2d3142;
+    color: white;
+}
+
+/* SELECT STYLE */
+
+select {
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: normal;
+  max-width: 100%;
+  padding: 8px 24px 8px 10px;
+}
+
+/* END SELECT STYLE */

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Search Results{% endblock %}
+{% block content %}
+
+<div>
+    {% for result in students %}
+
+    {{result[0]}}
+
+    {% endfor %}
+
+    {% for result in teachers %}
+
+    {{result[0]}}
+
+    {% endfor %}
+
+    {% for result in courses %}
+
+    {{result[0]}}
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

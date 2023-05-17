@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}My Courses{% endblock %}
+{% block content %}
+
+<h3>Hello {{ teachers[0][1] }}, {{ message }}!</h3>
+<div style="display: grid; justify-content: center;">
+    <h4 style="color: #DF1522; padding-bottom: 3vh;">My Courses</h4>
+    {% for course in active_courses %}
+
+    <div style="font-size: 20px; padding-bottom: 3vh;">{{ course[1] }} - {{ course[0] }}</div>
+
+    {% endfor %}
+</div>
+{% endblock %}

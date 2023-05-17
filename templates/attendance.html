@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Attendance{% endblock %}
+{% block content %}
+
+<h3>Hello {{ teachers[0][1] }}, {{ message }}</h3>
+<div class="attendance-div">
+    <h4>Choose a Course to Set Attendance</h4>
+    {% for course in active_courses %}
+    <h5><a href="/attendance/{{ course[0] }}">{{ course[0] }} - {{ course[1] }}</a></h5>
+    {% endfor %}
+    <br>
+    <h4>OR</h4>
+    <h5><a href="/show_attendance">Show Attendance History</a></h5>
+    <br>
+    <h4>OR</h4>
+    <h5><a href="/student_attendance">Search Student Attendance</a></h5>
+    <br>
+</div>
+
+{% endblock %}

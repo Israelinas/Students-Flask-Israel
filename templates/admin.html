@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block title %}Admin{% endblock %}
+{% block content %}
+
+<div style="display: flex; justify-content: center;">
+    <div>
+    <h1 style="padding-top: 2vh;">Hello Admin, {{ message }}</h1>
+
+    <form action="/register" method="POST">
+        <fieldset style="width: 100%;">
+            <legend>New user registration</legend>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password">
+            <input type="checkbox" id="show-password">
+            <label for="show-password" class="password-toggle">
+                <i class="fa fa-eye"></i>
+            </label>
+            <select name="role">
+                {% for role in roles %}
+                <option value="{{ role[0] }}" {% if loop.index==2 %}selected{% endif %}>{{ role[0] }}</option>
+                {% endfor %}
+            </select>
+            <input class="btn-add" type="submit" value="Register">
+        </fieldset>
+    </form>
+
+    <script>
+        var checkbox = document.getElementById('show-password');
+        var password = document.getElementsByName('password')[0];
+
+        checkbox.addEventListener('change', function () {
+            if (checkbox.checked) {
+                password.type = 'text';
+            } else {
+                password.type = 'password';
+            }
+        });
+    </script>
+
+
+    <form action="/admin/create_course" method="POST" enctype="multipart/form-data">
+        <fieldset style="width: 100%;">
+            <legend>Create Course</legend>
+            <input type="text" name="course_name" placeholder="Course Name" required>
+            <input type="text" name="course_desc" placeholder="Course Description">
+            <label for="course_image">Image</label>
+            <input type="file" name="course_image" placeholder="Course Image">
+            <label for="course_syllabus">Syllabus</label>
+            <input type="file" name="course_syllabus" placeholder="Course Syllabus">
+            <input class="btn-add" type="submit" value="Add">
+        </fieldset>
+    </form>
+
+    <form action="/admin/upload_image_to_course" method="POST" enctype="multipart/form-data">
+        <fieldset style="width: 100%;">
+            <legend>Upload Image to Course</legend>
+            <select name="course_id">
+                {% for course in courses %}
+                <option value="{{ course[0] }}">{{ course[1] }}</option>
+                {% endfor %}
+            </select>
+            <input type="file" name="image" required>
+            <input class="btn-add" type="submit" value="Add">
+        </fieldset>
+    </form>
+    
+    <form action="/admin/upload_syllabus_to_course" method="POST" enctype="multipart/form-data">
+        <fieldset style="width: 100%;">
+            <legend>Upload Syllabus to Course</legend>
+            <select name="course_id">
+                {% for course in courses %}
+                <option value="{{ course[0] }}">{{ course[1] }}</option>
+                {% endfor %}
+            </select>
+            <input type="file" name="syllabus">
+            <input class="btn-add" type="submit" value="Add">
+        </fieldset>
+    </form>
+
+    <form action="/admin/active_course" method="POST">
+        <fieldset style="width: 100%;">
+            <legend>Create Active Course</legend>
+            <select name="course_id">
+                {% for course in courses %}
+                <option value="{{ course[0] }}">{{ course[1] }}</option>
+                {% endfor %}
+            </select>
+            <select name="teacher_id">
+                {% for teacher in teachers %}
+                <option value="{{ teacher[0] }}">{{ teacher[2] }}</option>
+                {% endfor %}
+            </select>
+            <input type="date" name="start_date" required>
+            <input type="date" name="end_date" required>
+            <input class="btn-add" type="submit" value="Add">
+        </fieldset>
+    </form>
+
+
+
+    <form action="/admin/course_student" method="POST">
+        <fieldset style="width: 100%;">
+            <legend>Add Student to Course</legend>
+            <select name="active_course_id">
+                {% for course in active_courses %}
+                <option value="{{ course[0] }}">{{ course[0] }} - {{ course[1] }}</option>
+                {% endfor %}
+            </select>
+            <select name="student_id">
+                {% for student in students %}
+                <option value="{{ student[0] }}">{{ student[2] }}</option>
+                {% endfor %}
+            </select>
+            <input class="btn-add" type="submit" value="Add">
+        </fieldset>
+    </form>
+
+    <form action="/admin/admin_messages" method="POST" style="padding-bottom: 3vh;">
+        <fieldset style="width: 100%;">
+            <legend>Add Message</legend>
+            <input type="text" name="message" placeholder="Message" required>
+            <input class="btn-add" type="submit" value="Add">
+        </fieldset>
+    </form>
+</div>
+</div>
+
+{% endblock %}

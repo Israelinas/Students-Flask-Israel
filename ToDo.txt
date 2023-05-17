@@ -1,0 +1,41 @@
+To Do:
+
+
+
+Done:
+
+# Fix Email in "/teacher" and "/student"
+# Images issue in Students and Teachers view - File Upload
+# Update teacher in active course - Admin
+# Connect messages (JS) to DB
+# Attendance_courses - Fix Update button when Present wasn't checked
+# Make footer always presented in the bottom
+# Remove student from active course - Admin 
+# Remove Teacher
+# Remove active course
+# Delete student - Admin
+# Add date to Messages in index.html
+# Add Contact us page
+# Add About page
+# students.html, teachers.html - search needs to apply on email - Now it's only by name
+# Homepage leads form suddenly has a bug, check why and fix it
+# Add Unitests/Pytests
+# Fix bug in teacher/statistics
+# show_attendance - check how can keep course name and number in GET, so it will be presented after clicked on select button
+# Fix Search Student Attendance (Teacher view) - The query returns all students, but it needs to return only the specific student selected
+
+###### STATISTICS:
+Total:
+###### Number of different courses
+###### Number of students in all courses
+###### Number of Male and Female in all courses
+###### Average grade in all courses
+###### Average age in all courses
+###### % Attendance
+
+Per Course:
+###### Number of students in each course
+###### Number of Male and Female in each active course
+###### Average grade in each course
+###### Average age of students in each course
+###### % Attendance

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}My Courses{% endblock %}
+{% block content %}
+
+
+<div style="display: flex; justify-content: center;">
+    <h3>My Courses</h3>
+</div>
+<div style="display: grid; justify-content: center; font-size: 22px; padding-bottom: 5vh;">
+    {% for course in active_courses %}
+    <a href="{{ url_for('course_details', active_course_id=course[0]) }}">{{ course[1] }} - {{ course[0] }}</a><br>
+    {% endfor %}
+</div>
+
+{% endblock %}

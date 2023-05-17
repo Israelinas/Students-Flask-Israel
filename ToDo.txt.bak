@@ -1,0 +1,3 @@
+students.html, teachers.html - search needs to apply on email - Now it's only by name
+fix Search Student Attendance (Teacher view) - The query returns all students, but it needs to return only the specific student selected
+show_attendance - check how can keep course name and number in GET, so it will be presented after clicked on select button

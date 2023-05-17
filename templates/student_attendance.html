@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div style="display: grid; justify-content: center;">
+
+    <form method="GET">
+        <select name="student">
+            <option hidden>
+                {% if student != None %}
+                {{ student }}
+                {% else %}
+                Select Student
+                {% endif %}
+            </option>
+            {% for student in students %}
+            <option value="{{ student[0] }}">{{ student[1] }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Next">
+    </form>
+
+    <form method="POST">
+        <select name="course">
+            <option hidden value="">
+                {% if course != None %}
+                {{ course }}
+                {% else %}
+                Select course
+                {% endif %}
+            </option>
+            {% if 'student' in request.args %}
+            {% for course in courses %}
+            <option value="{{ course[0] }}">{{ course[1] }} - {{ course[0] }}</option>
+            {% endfor %}
+            {% endif %}
+        </select>
+        <input type="submit" value="Show">
+    </form>
+
+    {% if attendance != None %}
+    <h5>Attendance for<div>
+            <h4 style="color: #DF1522;">{{ student }} in {{ course }}</h4>
+        </div>
+    </h5>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Attendance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for att in attendance %}
+                <td>{{ att[1] }}</td>
+                <td>{{ att[0] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

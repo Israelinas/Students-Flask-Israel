@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}Teachers{% endblock %}
+{% block content %}
+
+<div class="search-container-div">
+  <form>
+    <input type="text" placeholder="Search teacher..." id="search-bar" class="search-course-student-teacher">
+  </form>
+</div>
+
+<div style="display: flex; justify-content: center; padding-top: 4vh; padding-bottom: 4vh;">
+  <table id="admin-teachers-students-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Birth Date</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Courses</th>
+        <th>Students Avg. Grade</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for teacher in teachers %}
+      <tr>
+        <form action="/admin/show_teachers/update" method="post">
+          <td><img src="{{ teacher[11] }}" alt="Teacher" style="max-width: 40px; max-height: 40px;"></td>
+          <td>
+            <input type="text" name="teacher_name" value="{{ teacher[0] }}">
+          </td>
+          <td>
+            {{ teacher[1] }}
+          </td>
+          <td>
+            <input type="date" name="teacher_birth_date" value="{{ teacher[3] }}">
+          </td>
+          <td>
+            {{ teacher[4]|round|int }}
+          </td>
+          <td>
+            <input type="email" name="teacher_email" value="{{ teacher[5] }}">
+          </td>
+          <td>
+            <input type="tel" name="teacher_phone" value="{{ teacher[9] }}">
+          </td>
+          <td>
+            <input type="text" name="teacher_address" value="{{ teacher[10] }}" style="width: 25vh;">
+          </td>
+          <td>
+            {{ teacher[6] }}
+          </td>
+          <td>
+            {{ teacher[7] }}
+          </td>
+          <td>
+            <input type="hidden" name="teacher_id" value="{{ teacher[8] }}">
+            <input type="submit" value="Update" class="btn-update" style="margin-left: 0px; margin-right: 0px;">
+          </td>
+        </form>
+        <td>
+          <form action="/admin/show_teachers/delete" method="post">
+            <input type="hidden" name="teacher_id" value="{{ teacher[8] }}">
+            <input type="submit" value="Delete" class="btn-delete">
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</div>
+
+
+<script>
+  const searchBar = document.getElementById('search-bar');
+
+  searchBar.addEventListener('input', () => {
+    const query = searchBar.value.toLowerCase();
+
+    const teacherRows = document.querySelectorAll('#admin-teachers-students-table tbody tr');
+
+    teacherRows.forEach((teacherRow) => {
+      const name = teacherRow.querySelector('td:nth-of-type(2) input').value.toLowerCase();
+      const email = teacherRow.querySelector('td:nth-of-type(6) input').value.toLowerCase();
+      const phone = teacherRow.querySelector('td:nth-of-type(7) input').value.toLowerCase();
+      const courses = teacherRow.querySelector('td:nth-of-type(9)').textContent.toLowerCase();
+
+      if (name.includes(query) || email.includes(query) || phone.includes(query) || courses.includes(query)) {
+        teacherRow.style.display = 'table-row';
+      } else {
+        teacherRow.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Courses{% endblock %}
+{% block content %}
+
+<div class="search-container-div">
+    <input type="text" id="searchBar" placeholder="Search course..." class="search-course-student-teacher">
+</div>
+<div class="course-card-container">
+    {% for course in courses %}
+    <div class="course-card">
+        <img src="{{ course[3] }}">
+        <div class="course-card-text">
+            <h2>{{ course[1] }}</h2>
+            <p>{{ course[2] }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#searchBar').on('input', function () {
+            var searchText = $(this).val().toLowerCase();
+            var url = '/courses?search_text=' + searchText;
+            window.history.replaceState(null, null, url);
+            $('.course-card').each(function () {
+                var courseName = $(this).find('h2').text().toLowerCase();
+                if (courseName.indexOf(searchText) === -1) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            });
+        });
+    });
+</script>
+
+
+{% endblock %}

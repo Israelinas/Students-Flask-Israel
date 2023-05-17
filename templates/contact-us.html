@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Contact us{% endblock %}
+{% block content %}
+
+<style>
+    header {
+        display: flex;
+        justify-content: center;
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 36px;
+        margin-top: 0;
+    }
+
+    .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .contact-us-form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .input-contact-us[type=text],
+    .input-contact-us[type=email],
+    textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+    }
+
+    .input-contact-us[type=submit] {
+        background-color: #333;
+        color: #fff;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .input-contact-us[type=submit]:hover {
+        background-color: #DF1522;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+</style>
+
+
+<header>
+    <h1>Contact Us</h1>
+</header>
+<div class="container">
+    <div style="display: grid; justify-content: center;">
+        <p><b>Address: </b> David Simchi 5, Petach Tikva, 4947805</p>
+        <p><b>Email: </b><a href="mailto:jb@jb.com">jb@jb.com</a></p>
+        <p><b>Telephone: </b><a href="tel:+972-3-9333377">03-933-3377</a></p>
+    </div>
+
+    <form class="contact-us-form" method="post" action="{{ url_for('contact_form') }}">
+        <label for="name">Name</label>
+        <input class="input-contact-us" type="text" id="name" name="name" placeholder="Your name.." required>
+
+        <label for="email">Email</label>
+        <input class="input-contact-us" type="email" id="email" name="email" placeholder="Your email address.."
+            required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Write something.." style="height:200px" required></textarea>
+
+        <input class="input-contact-us" type="submit" value="Submit">
+    </form>
+</div>
+
+{% endblock %}

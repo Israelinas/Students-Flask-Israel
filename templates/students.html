@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Students{% endblock %}
+{% block content %}
+
+<div class="search-container-div">
+  <form>
+    <input type="text" placeholder="Search student..." id="search-bar" class="search-course-student-teacher">
+  </form>
+</div>
+
+<div class="user-card-container">
+  {% for student in students %}
+  <div class="user-card">
+    <img src="{{ student[5] }}" alt="Student">
+    <h2>{{ student[0] }}</h2>
+    <p><b>Gender: </b>{{ student[1] }}</p>
+    <p><b>Age: </b> {{ student[4]|round|int }}</p>
+    <p><b>Email:</b> {{ student[6] }}</p>
+  </div>
+  {% endfor %}
+</div>
+
+<script>
+  const searchBar = document.getElementById('search-bar');
+
+  searchBar.addEventListener('input', () => {
+    const query = searchBar.value.toLowerCase();
+
+    const userCards = document.querySelectorAll('.user-card');
+
+    userCards.forEach((userCard) => {
+      const name = userCard.querySelector('h2').textContent.toLowerCase();
+      const email = userCard.querySelector('p:nth-of-type(3)').textContent.toLowerCase();
+
+      if (name.includes(query) || email.includes(query)) {
+        userCard.style.display = 'block';
+      } else {
+        userCard.style.display = 'none';
+      }
+    });
+  });
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Teachers{% endblock %}
+{% block content %}
+
+<div class="user-card-container">
+  {% for teacher in teachers %}
+  <div class="user-card">
+
+    <img src="data:image/jpg;base64,{{ teacher[6] }}" alt="Teacher Photo"
+      onerror="this.onerror=null; this.src='./static/img/anonymous_male.jpg';">
+    <h2>{{ teacher[0] }}</h2>
+    <p><b>Gender: </b>{{ teacher[1] }}</p>
+    <p><b>Age: </b> {{ teacher[4]|round|int }}</p>
+    <p><b>Email: </b>{{ teacher[5] }} </p>
+
+  </div>
+  {% endfor %}
+</div>
+
+
+{% endblock %}

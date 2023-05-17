@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}Teachers{% endblock %}
+{% block content %}
+
+<div class="search-container-div">
+  <input type="text" id="search-input" placeholder="Search..." class="search-course-student-teacher">
+</div>
+
+<div style="display: flex; justify-content: center; padding-top: 5vh; padding-bottom: 5vh;">
+    <table id="admin-teachers-students-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Active Course ID</th>
+                <th>Course Name</th>
+                <th>Teacher</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in active_courses %}
+            <form action="/admin/active_courses/update" method="post">
+                <tr>
+                    <td><img src="{{ course[5] }}" style="max-width: 40px; max-height: 40px;"></td>
+                    <td>{{ course[0] }}</td>
+                    <td>{{ course[1] }}</td>
+                    <td>
+                        <select name="teacher_id">
+                            {% for teacher in teachers %}
+                                {% if teacher[0] == course[6] %}
+                                    <option value="{{ teacher[0] }}" selected>{{ teacher[2] }}</option>
+                                {% else %}
+                                    <option value="{{ teacher[0] }}">{{ teacher[2] }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </td>                   
+                    <td><input type="date" name="start_date" value="{{ course[3] }}"></td>
+                    <td><input type="date" name="end_date" value="{{ course[4] }}"></td>
+                    <td>
+                            <input type="hidden" name="active_course_id" value="{{ course[0] }}">
+                            <input type="submit" value="Update" class="btn-update">
+
+                        </form>
+                    </td>
+                    <td>
+                        <div>
+                            <form action="/admin/active_courses/delete" method="post">
+                                <input type="hidden" name="active_course_id" value="{{ course[0] }}">
+                                <input type="submit" value="Delete" class="btn-delete">
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</div>
+
+
+<script>
+    const searchInput = document.getElementById('search-input');
+    const tableRows = document.querySelectorAll('tbody tr');
+
+    searchInput.addEventListener('input', () => {
+    const searchValue = searchInput.value.toLowerCase();
+
+    tableRows.forEach(row => {
+        const activeCourseId = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+        const courseName = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+        const teacherName = row.querySelector('td:nth-child(4) select option:checked').textContent.toLowerCase();
+
+        if (activeCourseId.includes(searchValue) || courseName.includes(searchValue) || teacherName.includes(searchValue)) {
+        row.style.display = 'table-row';
+        } else {
+        row.style.display = 'none';
+        }
+    });
+    });
+
+</script>
+  
+
+{% endblock %}

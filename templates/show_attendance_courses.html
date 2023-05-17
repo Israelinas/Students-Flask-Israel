@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Attendance{% endblock %}
+{% block content %}
+
+<h3>Hello {{ teachers[0][1] }}, {{ message }}</h3>
+
+{% for course in active_courses %}
+<a href="attendance_courses/">{{ course[0] }} - {{ course[1] }}</a>
+{% endfor %}
+
+{% endblock %}

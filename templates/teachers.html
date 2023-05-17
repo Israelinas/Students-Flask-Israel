@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Teachers{% endblock %}
+{% block content %}
+
+<div class="search-container-div">
+  <input type="text" id="search-input" placeholder="Search teacher..." class="search-course-student-teacher">
+</div>
+
+<div class="user-card-container">
+  {% for teacher in teachers %}
+  <div class="user-card teacher-card">
+
+    <img src="{{ teacher[5] }}" alt="Teacher">
+    <h2>{{ teacher[0] }}</h2>
+    <p><b>Gender: </b>{{ teacher[1] }}</p>
+    <p><b>Age: </b> {{ teacher[4]|round|int }}</p>
+    <p><b>Email: </b>{{ teacher[6] }} </p>
+    <p><b>Courses: </b>{{ teacher[7] }} </p>
+
+  </div>
+  {% endfor %}
+</div>
+
+<script>
+  const searchInput = document.getElementById('search-input');
+  const teacherCards = document.querySelectorAll('.teacher-card');
+
+  searchInput.addEventListener('input', () => {
+    const searchValue = searchInput.value.toLowerCase();
+
+    teacherCards.forEach(teacherCard => {
+      const teacherName = teacherCard.querySelector('h2').textContent.toLowerCase();
+      const teacherEmail = teacherCard.querySelector('p:nth-child(5)').textContent.toLowerCase();
+      const teacherCourses = teacherCard.querySelector('p:nth-child(6)').textContent.toLowerCase();
+
+      if (teacherName.includes(searchValue) || teacherEmail.includes(searchValue) || teacherCourses.includes(searchValue)) {
+        teacherCard.style.display = 'block';
+      } else {
+        teacherCard.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+
+{% endblock %}

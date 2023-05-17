@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}Leads{% endblock %}
+
+{% block content %}
+
+<div class="search-container-div">
+    <input type="text" id="search-input" placeholder="Search..." class="search-course-student-teacher">
+</div>
+
+
+<div style="display: flex; justify-content: center; padding-top: 5vh;">
+    <table id="admin-teachers-students-table">
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>City</th>
+            <th>Status</th>
+        </tr>
+        {% for lead in leads %}
+        <form method="POST">
+            <tr>
+                <td>{{ lead[1] }}</td>
+                <td>{{ lead[2] }}</td>
+                <td>{{ lead[3] }}</td>
+                <td>{{ lead[4] }}</td>
+                <td>
+                    <input type="hidden" name="lead_id" value="{{ lead[0] }}">
+                    <select name="status">
+                        <option value="None" {% if lead[5]==None %} selected {% endif %} hidden>Status</option>
+                        <option value="Assigned" {% if lead[5]=='Assigned' %} selected {% endif %}>Assigned</option>
+                        <option value="Not Interested" {% if lead[5]=='Not Interested' %} selected {% endif %}>Not
+                            Interested</option>
+                        <option value="Call Back" {% if lead[5]=='Call Back' %} selected {% endif %}>Call Back</option>
+                    </select>
+                </td>
+                <td><input type="submit" name="update_status" value="Update" class="btn-update"></td>
+                <td><input type="submit" name="delete_lead" value="Delete" class="btn-delete"></td>
+            </tr>
+        </form>
+        {% endfor %}
+    </table>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var searchInput = document.getElementById("search-input");
+      var table = document.getElementById("admin-teachers-students-table");
+      var rows = table.getElementsByTagName("tr");
+  
+      searchInput.addEventListener("input", function() {
+        var query = searchInput.value.toLowerCase();
+  
+        for (var i = 1; i < rows.length; i++) {
+          var row = rows[i];
+          var columns = row.getElementsByTagName("td");
+          var found = false;
+  
+          for (var j = 0; j < columns.length - 3; j++) { 
+            var column = columns[j];
+            var text = column.textContent || column.innerText;
+  
+            if (text.toLowerCase().indexOf(query) > -1) {
+              found = true;
+              break;
+            }
+          }
+  
+          var statusColumn = columns[columns.length - 3]; 
+          var select = statusColumn.querySelector("select");
+          var selectedOption = select.options[select.selectedIndex].value.toLowerCase(); 
+  
+          if (selectedOption.indexOf(query) > -1) {
+            found = true;
+          }
+  
+          row.style.display = found ? "" : "none";
+        }
+      });
+    });
+  </script>
+  
+  
+
+{% endblock %}

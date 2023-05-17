@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Courses{% endblock %}
+{% block content %}
+
+<div class="course-card-container">
+    {% for course in courses %}
+    <div class="course-card">
+        <img src="{{ course[3] }}">
+        <div class="course-card-text">
+            <h2>{{ course[1] }}</h2>
+            <p>{{ course[2] }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

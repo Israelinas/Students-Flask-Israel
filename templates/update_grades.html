@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Teacher Panel{% endblock %}
+{% block content %}
+
+<h3>Hello {{ teachers[0][1] }}, {{ message }}!</h3>
+<div class="teacher_action" style="padding-bottom: 2vh;">
+    <form method="GET">
+        <select name="active_course_id" required>
+            <option  hidden>{% if selected_course %}{{ active_course_id }} - {{ selected_course[0][0] }} {% else %} Select Course {% endif %}</option>
+            {% for course in courses %}
+            <option value="{{ course[0] }}">{{ course[0] }} - {{ course[1] }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Show Students" class="">
+    </form>
+    {{ error_message }}
+    {% for student in students %}
+
+    <form action="/update_grade" method="POST" class="update-grade-form">
+        <div class="update-grade-student-name">{{ student[3] }}:</div>
+        <input type="text" name="student_id" value="{{ student[2] }}" hidden>
+        <input type="text" name="active_course_id" value="{{ active_course_id }}" hidden>
+        <input name="grade" type="number" value="{{ student[1] }}" class="input-grade" max="100">
+        <input class="btn-update" type="submit" value="Update" class="update-grade">
+    </form>
+    {% endfor %}
+</div>
+
+{% endblock %}

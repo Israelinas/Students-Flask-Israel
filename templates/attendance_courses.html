@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Attendance{% endblock %}
+{% block content %}
+
+<h3>Hello {{ teachers[0][1] }}, {{ message }}</h3>
+<div class="attendance-courses-div">
+    <h5>Attendance for course: <div>
+            <h4 style="color: #DF1522;">{{students[0][4]}} - {{students[0][0]}}</h4>
+        </div>
+    </h5>
+    <h5>Date: <div>
+            <h4 style="color: #DF1522;">{{ current_date }}</h4>
+        </div>
+    </h5>
+</div>
+<div class="attendance-div">
+    <table class="attendance-table">
+        <thead class="attendance-thead">
+            <tr class="attendance-tr">
+                <th class="attendance-th">Student Name</th>
+                <th class="attendance-th">Present</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <form method="POST">
+                <input type="hidden" name="active_course_id" value="{{ student[0] }}">
+                <input type="hidden" name="student_id" value="{{ student[2] }}">
+                <input type="hidden" name="attendance_date" value="{{ current_date }}">
+                <tr class="attendance-tr">
+                    <td class="attendance-td">{{ student[1] }}</td>
+                    <td class="attendance-td">
+                        <input name="attendance_status" type="radio" value="YES" id="yes" class="attendance-radio" {% if student[3]=='YES' %}checked{% else %}checked{% endif %}>
+                        <label for="yes">Yes</label>
+                        <input name="attendance_status" type="radio" value="NO" id="no" class="attendance-radio" {% if student[3]=='NO' %}checked{% endif %}>
+                        <label for="no">No</label>
+                    </td>
+                    <td class="attendance-td"><input class="btn-update-attendance" type="submit" value="Update"></td>
+                </tr>
+            </form>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Students{% endblock %}
+{% block content %}
+
+<div class="user-card-container">
+  {% for student in students %}
+  <div class="user-card">
+    <img src="data:image/jpg;base64,{{ student[6] }}" alt="Student Photo"
+      onerror="this.onerror=null; this.src='./static/img/anonymous_male.jpg';">
+    <h2>{{ student[0] }}</h2>
+    <p><b>Gender: </b>{{ student[1] }}</p>
+    <p><b>Age: </b> {{ student[4]|round|int }}</p>
+    <p><b>Email:</b> {{ student[5] }}</p>
+  </div>
+  {% endfor %}
+</div>
+
+
+{% endblock %}
