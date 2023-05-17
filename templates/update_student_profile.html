@@ -12,7 +12,7 @@
                 <br><input type="text" name="name" value="{{ student_info[0][0] }}" autofocus>
             </p>
             <p><label for="image">Profile picture</label>
-                <br><input type="file" name="image" value="{{ student_info[0][1] }}">
+                <br><input type="file" name="image" id="image">
             </p>
             <p><select name="gender">
                     <option value="{{ student_info[0][2] }}" selected hidden>{{ student_info[0][2] }}</option>

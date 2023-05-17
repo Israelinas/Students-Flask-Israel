@@ -11,7 +11,7 @@
                 <br><input type="text" name="name" value="{{ teacher_info[0][0] }}" autofocus>
             </p>
             <p><label for="image">Profile picture</label>
-                <br><input type="file" name="image" value="{{ teacher_info[0][1] }}">
+                <br><input type="file" name="image" id="image">
             </p>
             <p><select name="gender" required>
                     <option value="{{ teacher_info[0][2] }}" selected hidden>{{ teacher_info[0][2] }}</option>
@@ -49,7 +49,7 @@
     <script>
         var checkbox = document.getElementById('show-password');
         var password = document.getElementsByName('password')[0];
-
+        
         checkbox.addEventListener('change', function () {
             if (checkbox.checked) {
                 password.type = 'text';
